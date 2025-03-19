@@ -52,12 +52,17 @@ class DieFragment : Fragment() {
             currentRoll = savedInstanceState.getInt(PREVIOUS_ROLL)
             dieTextView.text = currentRoll.toString()
         }
-
-
     }
 
     fun throwDie() {
         currentRoll = (Random.nextInt(dieSides)+1)
         dieTextView.text = currentRoll.toString()
+    }
+
+    companion object {
+        fun newInstance(dieSides: Int) =
+            DieFragment().apply {
+                arguments = Bundle().apply {putInt(DIESIDE, dieSides)}
+            }
     }
 }
